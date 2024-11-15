@@ -18,6 +18,7 @@ export default function NavBar(){
             <Nav.Link href="/#footer">Contact Us</Nav.Link>
             <Nav.Link href="#">Reservations</Nav.Link>
             <Nav.Link as={Link} to="/login">Customer Login</Nav.Link>
+            <Nav.Link href="/inventory">Staff Login</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
