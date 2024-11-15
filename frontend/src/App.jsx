@@ -1,6 +1,8 @@
 import React from "react"
 import {Routes, Route} from 'react-router-dom'
 import Home from './pages/Home'
+import Login from './pages/login';
+import CreateAccount from './pages/CreateAccount';
 import Inventory from './pages/Inventory'
 import StaffLogin from './pages/StaffLogin'
 import './css/styles.css'
