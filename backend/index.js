@@ -1,7 +1,8 @@
 import express from "express";
 import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
-import inventoryRoute from './routes/inventoryRoute.js'
+import inventoryRoute from './routes/inventoryRoute.js';
+import staffRoute from './routes/staffRoute.js';
 import cors from 'cors';
 
 const app = express();
@@ -15,6 +16,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/inventory', inventoryRoute);
+app.use('/staff', staffRoute);
 
 mongoose
     .connect(mongoDBURL)

@@ -5,28 +5,28 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
     try {
-        if (
-            !req.body.name ||
-            !req.body.quantity ||
-            !req.body.price ||
-            !req.body.status
-        ) {
+        const { name, quantity, price } = req.body;
+
+        if (!name || quantity === undefined || !price) {
             return res.status(400).send({
                 message: 'Send all required fields',
             });
         }
+
         const newItem = {
-            name: req.body.name,
-            quantity: req.body.quantity,
-            price: req.body.price,
-            status: req.body.status,
+            name,
+            quantity,
+            price,
+            status: quantity <= 0 ? 'Out of Stock' : quantity < 20 ? 'Low Stock' : 'In Stock',
         };
 
         const item = await Inventory.create(newItem);
         return res.status(201).send(item);
-    } catch(error) {
+    } catch (error) {
         console.log(error.message);
-        res.status(500).send({ message : error.message });
+        return res.status(500).send({
+            message: 'Internal Server Error',
+        });
     }
 });
 
@@ -58,46 +58,49 @@ router.get('/:id', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-    try{
-        if (
-            !req.body.name ||
-            !req.body.quantity ||
-            !req.body.price ||
-            !req.body.status
-        ) {
+    try {
+        const { name, quantity, price } = req.body;
+
+        if (name === undefined || quantity === undefined || price === undefined) {
             return res.status(400).send({
                 message: 'Send all required fields',
             });
         }
 
         const { id } = req.params;
-        const result = await Inventory.findByIdAndUpdate(id, req.body);
-        if (!result) {
+        const status = quantity <= 0 ? 'Out of Stock' : quantity < 20 ? 'Low Stock' : 'In Stock';
+        const updatedItem = await Inventory.findByIdAndUpdate(id, { name, quantity, price, status }, { new: true });
+
+        if (!updatedItem) {
             return res.status(404).json({ message: 'Item not found' });
         }
-        return res.status(200).send( { message: 'Item updated successfully' });
 
-    } catch(error) {
+        return res.status(200).send(updatedItem);
+    } catch (error) {
         console.log(error.message);
-        res.status(500).send({ message : error.message });
+        res.status(500).send({ message: error.message });
     }
 });
 
 router.delete('/:id', async (req, res) => {
-    try{
-
+    try {
         const { id } = req.params;
+        const item = await Inventory.findByIdAndDelete(id);
 
-        const result = await Inventory.findByIdAndDelete(id);
-
-        if (!result){
-            return res.status(404).json({ message: 'Item not found' });
+        if (!item) {
+            return res.status(404).send({
+                message: 'Item not found',
+            });
         }
 
-        return res.status(200).send({ message: 'Item deleted successfully' });
-    } catch(error) {
+        return res.status(200).send({
+            message: 'Item deleted successfully',
+        });
+    } catch (error) {
         console.log(error.message);
-        res.status(500).send({ message : error.message });
+        return res.status(500).send({
+            message: 'Internal Server Error',
+        });
     }
 });
 

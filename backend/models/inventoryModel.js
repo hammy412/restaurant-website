@@ -16,10 +16,8 @@ const inventorySchema = mongoose.Schema(
         },
         status: {
             type: String,
-            required: true,
         }
     }
 );
-
 
 export const Inventory = mongoose.model('Inventory', inventorySchema);
