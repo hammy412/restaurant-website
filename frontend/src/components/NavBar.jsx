@@ -3,6 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
+
 
 
 export default function NavBar(){
@@ -17,7 +19,7 @@ export default function NavBar(){
             <Nav.Link href="/#menu">Menu</Nav.Link>
             <Nav.Link href="/#footer">Contact Us</Nav.Link>
             <Nav.Link href="#">Reservations</Nav.Link>
-            <Nav.Link href="#">Customer Login</Nav.Link>
+            <Nav.Link as={Link} to="/login">Customer Login</Nav.Link>
             <Nav.Link href="/inventory">Staff Login</Nav.Link>
           </Nav>
         </Navbar.Collapse>
