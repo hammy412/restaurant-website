@@ -59,6 +59,13 @@ function StaffLogin() {
                 />
                 <h4 className="mt-1 mb-5 pb-1">
                   <i>Brought to you by DSA Solutions</i>
+                  <span
+                    className="info-icon"
+                    data-tooltip="&quot;DSA Solutions&quot; is a software development 
+                    company specializing in customized Restaurant Management Systems (RMSs) for restaurants."
+                  >
+                    ?
+                  </span>
                 </h4>
               </div>
 
