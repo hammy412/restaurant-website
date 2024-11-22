@@ -3,6 +3,7 @@ import { Staff } from '../models/staffModel.js';
 
 const router = express.Router();
 
+// this post method adds a new staff member to the database
 router.post('/', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -28,6 +29,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+//this get method retrieves the current staff database
 router.get('/', async (req, res) => {
     try{
         const staff = await Staff.find({});
@@ -41,6 +43,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+//this post method logs in a staff member
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;

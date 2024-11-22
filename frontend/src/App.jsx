@@ -14,6 +14,7 @@ export default function App() {
       <Route path='/inventory' element={<Inventory />} />
       <Route path="/login" element={<Login />} />
       <Route path="/create-account" element={<CreateAccount />} />
+      <Route path="/staff-login" element={<StaffLogin />} />
     </Routes>
   )
 }
