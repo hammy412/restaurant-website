@@ -5,6 +5,7 @@ import Login from './pages/login';
 import CreateAccount from './pages/CreateAccount';
 import Inventory from './pages/Inventory'
 import StaffLogin from './pages/StaffLogin'
+import StaffDashboard from './pages/StaffDashboard'
 import './css/styles.css'
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/create-account" element={<CreateAccount />} />
       <Route path="/staff-login" element={<StaffLogin />} />
+      <Route path="/staff-dashboard" element={<StaffDashboard />} />
     </Routes>
   )
 }

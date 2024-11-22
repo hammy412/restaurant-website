@@ -1,0 +1,86 @@
+/* General styles for the Staff Dashboard */
+
+.staff-dashboard-intro-wrapper{
+    width: 80%;  /* Set width to match the buttons */
+    max-width: 1100px;  
+    margin: 0 auto;  /* Center it horizontally */
+    padding-bottom: 30px;  /* Add some space/padding at the bottom */
+}
+
+.staff-dashboard-intro{
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 20px;  /* Add some padding for better spacing */
+    border-radius: 10px;  /* Slight rounding for the box */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Subtle shadow effect */
+  }
+  
+  .staff-dashboard-intro h4{
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .staff-dashboard-intro p{
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Styling for the buttons */
+  .dashboard-btn{
+    font-size: 1.5rem;
+    height: 250px;  /* Ensuring the button takes up enough space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  /* Spacing out text and image */
+    align-items: center;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensuring it fits well inside the column */
+  }
+  
+  .dashboard-btn span{
+    font-weight: bold;
+    margin-bottom: 15px; /* Space between text and image */
+  }
+  
+  .dashboard-img{
+    max-width: 80%;
+    max-height: 220px; /* Ensure the image is properly contained */
+    object-fit: contain;
+    margin-bottom: 30px; 
+  }
+  
+  /* Make sure buttons are side by side in larger viewports */
+  @media (min-width: 768px){
+    .staff-dashboard-intro{
+      text-align: center;
+    }
+  
+    .dashboard-btn{
+      height: 400px;
+      font-size: 1.5rem;
+    }
+  
+    /* Remove the underline from the gray "Inventory Dashboard" button */
+    .dashboard-btn span{
+      text-decoration: none;
+    }
+  }
+  
+  /* Responsive behavior */
+  @media (max-width: 767px){
+    .staff-dashboard-intro h4{
+      font-size: 1.5rem;
+    }
+  
+    .dashboard-btn{
+      height: 200px;
+      font-size: 1.2rem;
+    }
+  
+    .dashboard-img{
+      max-height: 100px;
+    }
+  }  
