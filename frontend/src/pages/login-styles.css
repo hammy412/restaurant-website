@@ -21,3 +21,56 @@
     border-bottom-right-radius: .3rem;
   }
 }
+
+/* style for the question mark icon */
+.info-icon {
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px; /* Define width and height for the circle */
+  height: 15px;
+  border-radius: 50%; /* make the backing a circle */
+  background-color: darkblue; /* circle color */
+  color: white; /* the text/icon color */
+  font-weight: normal;
+  text-align: center;
+  line-height: 1; /* Adjust vertical alignment of the "?" */
+}
+
+/* tooltip styling */
+.info-icon::after {
+  content: attr(data-tooltip); /* Display the tooltip text from the data attribute */
+  visibility: hidden;
+  opacity: 0;
+  width: 200px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-style: italic;
+  border-radius: 5px;
+  padding: 5px 10px;
+  position: absolute;
+  top: -100px; /* position above the icon, and not covering other elements */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  transition: opacity 1s, visibility 0.5s;
+  white-space: normal;
+  font-size: 0.8rem;
+}
+
+/* showing the tooltip on hover */
+.info-icon:hover::after {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* hover effect for the icon circle */
+.info-icon:hover {
+  background-color: black; /* change circle color on hover */
+  color: silver; /* change question mark color on hover */
+}
