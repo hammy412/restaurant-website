@@ -1,12 +1,6 @@
 import './create-account-styles.css';
 import React from 'react';
-import {
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBInput
-} from 'mdb-react-ui-kit';
+import { MDBBtn, MDBContainer, MDBRow, MDBCol, MDBInput } from 'mdb-react-ui-kit';
 import NavBar from '../components/NavBar';
 
 function CreateAccount() {

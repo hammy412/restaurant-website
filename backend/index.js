@@ -3,6 +3,7 @@ import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
 import inventoryRoute from './routes/inventoryRoute.js';
 import staffRoute from './routes/staffRoute.js';
+import reservationRoutes from './routes/reservationRoutes.js';
 import cors from 'cors';
 
 const app = express();
@@ -17,16 +18,16 @@ app.get('/', (req, res) => {
 
 app.use('/inventory', inventoryRoute);
 app.use('/staff', staffRoute);
+app.use('/reservations', reservationRoutes);
 
 mongoose
-    .connect(mongoDBURL)
-    .then(() => {
-        console.log('App connected to database');
-        app.listen(PORT, () => {
-            console.log(`App is listening to port: ${PORT}`)
-        });
-    })
-    .catch((error) => {
-        console.log(error);
+  .connect(mongoDBURL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('App connected to database');
+    app.listen(PORT, () => {
+      console.log(`App is listening to port: ${PORT}`);
     });
-
+  })
+  .catch((error) => {
+    console.log(error);
+  });
