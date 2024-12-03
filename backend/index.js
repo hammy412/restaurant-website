@@ -21,7 +21,7 @@ app.use('/staff', staffRoute);
 app.use('/reservations', reservationRoutes);
 
 mongoose
-  .connect(mongoDBURL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(mongoDBURL)
   .then(() => {
     console.log('App connected to database');
     app.listen(PORT, () => {
