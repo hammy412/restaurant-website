@@ -38,7 +38,7 @@ function StaffDashboard(){
             </MDBCol>
 
             <MDBCol col="12" md="5" className="mb-4 d-flex justify-content-center">
-              <Link to="/inventory-dashboard" className="w-100">
+              <Link to="/inventory" className="w-100">
                 <MDBBtn className="dashboard-btn" size="lg" color="secondary">
                   <span>Inventory Dashboard</span>
                   <img

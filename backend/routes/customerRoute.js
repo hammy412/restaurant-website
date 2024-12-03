@@ -6,9 +6,9 @@ const router = express.Router();
 //create a new customer (use in registration)
 router.post("/", async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { name, email, password } = req.body;
 
-        if (!email || !password) {
+        if (!name || !email || !password) {
             return res.status(400).send({
                 message: "Send all required fields",
             });
@@ -23,6 +23,7 @@ router.post("/", async (req, res) => {
         }
 
         const newCustomer = {
+            name,
             email,
             password,
         };
@@ -70,6 +71,29 @@ router.post("/login", async (req, res) => {
         }
 
         return res.status(200).send(customer);
+    } catch (error) {
+        console.log(error.message);
+        return res.status(500).send({
+            message: "Internal Server Error",
+        });
+    }
+});
+
+// Delete a customer
+router.delete("/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const customer = await Customer.findByIdAndDelete(id);
+        if (!customer) {
+            return res.status(404).send({
+                message: "Customer not found",
+            });
+        }
+
+        return res.status(200).send({
+            message: "Customer deleted successfully",
+        });
     } catch (error) {
         console.log(error.message);
         return res.status(500).send({

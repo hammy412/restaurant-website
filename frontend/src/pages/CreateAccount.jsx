@@ -1,5 +1,7 @@
 import './create-account-styles.css';
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import {
   MDBBtn,
   MDBContainer,
@@ -10,6 +12,34 @@ import {
 import NavBar from '../components/NavBar';
 
 function CreateAccount() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleCreateAccount = () => {
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+    axios
+    .post('http://localhost:5555/customer', {
+      name,
+      email,
+      password
+    })
+    .then((res) => {
+      if (res.status === 201) {
+        navigate('/login');
+      }
+    })
+    .catch((err) => {
+      setError(err.response.data.message);
+    });
+  }
+
   return (
     <>
       <NavBar />
@@ -22,12 +52,13 @@ function CreateAccount() {
                 <h4 className="mt-1 mb-5 pb-1">Brought to you by DSA Solutions</h4>
               </div>
               <h5>Create your account</h5>
-              <MDBInput wrapperClass='mb-4' label='Full Name' id='form1' type='text' />
-              <MDBInput wrapperClass='mb-4' label='Email address' id='form2' type='email' />
-              <MDBInput wrapperClass='mb-4' label='Password' id='form3' type='password' />
-              <MDBInput wrapperClass='mb-4' label='Confirm Password' id='form4' type='password' />
+              <MDBInput wrapperClass='mb-4' placeholder='Full Name' id='form1' type='text' value={name} onChange={(e) => setName(e.target.value)} />
+              <MDBInput wrapperClass='mb-4' placeholder='Email address' id='form2' type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+              <MDBInput wrapperClass='mb-4' placeholder='Password' id='form3' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+              <MDBInput wrapperClass='mb-4' placeholder='Confirm Password' id='form4' type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+              {error && <p style={{ color: 'red' }}>{error}</p>}
               <div className="text-center pt-1 mb-5 pb-1">
-                <MDBBtn className="mb-4 w-100 gradient-custom-2">Create Account</MDBBtn>
+                <MDBBtn onClick={handleCreateAccount} className="mb-4 w-100 gradient-custom-2">Create Account</MDBBtn>
               </div>
             </div>
           </MDBCol>

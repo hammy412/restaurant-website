@@ -8,30 +8,31 @@ import {
   MDBInput
 } from 'mdb-react-ui-kit';
 import NavBar from '../components/NavBar';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function StaffLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = () => {
-    // Regular expression for validating email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
-    if (!email || !password) {
-      setError('Both email and password are required.');
-      return;
-    }
-  
-    if (!emailRegex.test(email)) {
-      setError('Please enter a valid email address.');
-      return;
-    }
-  
-    // Clear error and proceed with login logic
-    setError('');
-    console.log('Logging in with:', { email, password });
-    // Add actual login logic here, such as API calls
+    axios
+      .post('http://localhost:5555/staff/login', {
+        email,
+        password,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          sessionStorage.setItem('token', res.data.token);
+          navigate('/staff-dashboard');
+        }
+      })
+      .catch((err) => {
+        setError(err.response.data.message);
+      });
   };
 
   const handleKeyDown = (e) => {
