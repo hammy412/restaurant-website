@@ -1,8 +1,8 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-const ProtectedRoute = ({ children }) => {
-  const token = sessionStorage.getItem('token');
+const StaffProtectedRoute = ({ children }) => {
+  const token = sessionStorage.getItem('staffToken');
 
   if (!token) {
     return <Navigate to="/staff-login" />;
@@ -11,4 +11,4 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
-export default ProtectedRoute;
+export default StaffProtectedRoute;

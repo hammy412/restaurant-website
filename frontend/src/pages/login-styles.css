@@ -74,3 +74,8 @@
   background-color: black; /* change circle color on hover */
   color: silver; /* change question mark color on hover */
 }
+
+.mdb-btn {
+  transition: none !important;
+  transform: none !important;
+}

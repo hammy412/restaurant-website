@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import inventoryRoute from './routes/inventoryRoute.js';
 import staffRoute from './routes/staffRoute.js';
 import customerRoute from './routes/customerRoute.js';
+import reservationRoutes from './routes/reservationRoutes.js';
 import cors from 'cors';
 
 const app = express();
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 app.use('/inventory', inventoryRoute);
 app.use('/staff', staffRoute);
 app.use('/customer', customerRoute);
+app.use('/reservations', reservationRoutes);
 
 mongoose
     .connect(mongoDBURL)

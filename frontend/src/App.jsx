@@ -6,7 +6,10 @@ import CreateAccount from './pages/CreateAccount';
 import Inventory from './pages/Inventory'
 import StaffLogin from './pages/StaffLogin'
 import StaffDashboard from './pages/StaffDashboard'
-import ProtectedRoute from "./components/ProtectedRoute";
+import Reservation from './pages/Reservation'
+import ReservationsDashboard from './pages/ReservationsDashboard'
+import StaffProtectedRoute from "./components/staffProtectedRoute";
+import CustomerProtectedRoute from "./components/customerProtectedRoute";
 import './css/styles.css'
 
 export default function App() {
@@ -16,22 +19,42 @@ export default function App() {
       <Route 
       path="/inventory" 
       element={
-        <ProtectedRoute>
+        <StaffProtectedRoute>
           <Inventory />
-        </ProtectedRoute>
+        </StaffProtectedRoute>
       }
       />
       <Route path="/login" element={<Login />} />
       <Route path="/create-account" element={<CreateAccount />} />
       <Route path="/staff-login" element={<StaffLogin />} />
       <Route 
-      path="/staff-dashboard" 
+      path="/reservations" 
       element={
-        <ProtectedRoute>
-          <StaffDashboard />
-        </ProtectedRoute>
+        <CustomerProtectedRoute>
+          <Reservation />
+        </CustomerProtectedRoute>
       }
       />
+
+
+      <Route 
+      path="/reservations-dashboard" 
+      element={
+        <StaffProtectedRoute>
+          <ReservationsDashboard />
+        </StaffProtectedRoute>
+      }
+      />
+
+      <Route 
+      path="/staff-dashboard" 
+      element={
+        <StaffProtectedRoute>
+          <StaffDashboard />
+        </StaffProtectedRoute>
+      }
+      />
+
     </Routes>
   )
 }

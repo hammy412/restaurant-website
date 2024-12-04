@@ -52,7 +52,7 @@ function CreateAccount() {
               <MDBInput wrapperClass='mb-4' placeholder='Confirm Password' id='form4' type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
               {error && <p style={{ color: 'red' }}>{error}</p>}
               <div className="text-center pt-1 mb-5 pb-1">
-                <MDBBtn onClick={handleCreateAccount} className="mb-4 w-100 gradient-custom-2">Create Account</MDBBtn>
+                <button onClick={handleCreateAccount} className="mb-4 w-100 gradient-custom-2 btn-custom">Create Account</button>
               </div>
             </div>
           </MDBCol>

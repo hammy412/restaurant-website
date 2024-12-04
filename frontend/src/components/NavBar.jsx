@@ -5,8 +5,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 
-
-
 export default function NavBar(){
     return (
         <Navbar fixed="top" expand="lg" bg='dark' data-bs-theme='dark'>
@@ -18,9 +16,8 @@ export default function NavBar(){
             <Nav.Link href="/#about">About Us</Nav.Link>
             <Nav.Link href="/#menu">Menu</Nav.Link>
             <Nav.Link href="/#footer">Contact Us</Nav.Link>
-            <Nav.Link as={Link} to="/reservations">Reservations</Nav.Link>
-            <Nav.Link as={Link} to="/login">Customer Login</Nav.Link>
-            <Nav.Link href="/staff-login">Staff Login</Nav.Link>
+            <Nav.Link as={Link} to="/reservations">Make a Reservation</Nav.Link>
+            <Nav.Link href="/staff-dashboard">Staff Dashboard</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

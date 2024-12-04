@@ -25,7 +25,7 @@ function StaffDashboard(){
           {/* Buttons for Reservation and Inventory Dashboards (side-by-side) */}
           <MDBRow className="w-100 d-flex justify-content-center">
             <MDBCol col="12" md="5" className="mb-4 d-flex justify-content-center">
-              <Link to="/reservation-dashboard" className="w-100">
+              <Link to="/reservations-dashboard" className="w-100">
                 <MDBBtn className="dashboard-btn" size="lg" color="primary">
                   <span>Reservation Dashboard</span>
                   <img

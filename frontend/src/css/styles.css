@@ -330,3 +330,31 @@ footer {
 .out-of-stock {
     background-color: #ffcccc; /* Light red background for out of stock */
 }
+
+.mdb-btn {
+    transition: none !important;
+    transform: none !important;
+}
+
+.btn-custom {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-custom:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-custom:focus {
+    outline: none;
+  }
+  
+  .btn-custom:active {
+    background-color: #004085;
+    transform: none !important;
+  }

@@ -1,5 +1,5 @@
 import './login-styles.css';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   MDBBtn,
   MDBContainer,
@@ -9,8 +9,33 @@ import {
 } from 'mdb-react-ui-kit';
 import NavBar from '../components/NavBar';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    axios
+      .post('http://localhost:5555/customer/login', {
+        email,
+        password,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          sessionStorage.setItem('customerToken', res.data.token);
+          navigate('/reservations');
+        }
+      })
+      .catch((err) => {
+        setError(err.response.data.message);
+      });
+  };
+
+
   return (
     <>
       <NavBar />
@@ -23,18 +48,18 @@ function Login() {
                 <h4 className="mt-1 mb-5 pb-1">Brought to you by DSA Solutions</h4>
               </div>
               <h5>Please login to your account</h5>
-              <MDBInput wrapperClass='mb-4' label='Email address' id='form1' type='email' />
-              <MDBInput wrapperClass='mb-4' label='Password' id='form2' type='password' />
+              <MDBInput wrapperClass='mb-4' placeholder='Email address' id='form1' type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+              <MDBInput wrapperClass='mb-4' placeholder='Password' id='form2' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+              {error && <p style={{ color: 'red' }}>{error}</p>}
               <div className="text-center pt-1 mb-5 pb-1">
-                <MDBBtn className="mb-4 w-100 gradient-custom-2">Sign in</MDBBtn>
-                <a className="text-muted" href="#!">Forgot password?</a>
+                <button onClick={handleLogin} className="mb-4 w-100 gradient-custom-2 btn-custom">Sign in</button>
               </div>
-              <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
+              <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4" style={{ marginTop: '-40px' }}>
                 <p className="mb-0">Don't have an account?</p>
                 <Link to="/create-account">
-                  <MDBBtn outline className='mx-2' color='primary'>
-                    Create Account
-                  </MDBBtn>
+                <button className='mx-2 btn-custom'>
+                  Create Account
+                </button>
                 </Link>
               </div>
             </div>

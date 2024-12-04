@@ -8,7 +8,6 @@ import {
   MDBInput
 } from 'mdb-react-ui-kit';
 import NavBar from '../components/NavBar';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -26,7 +25,7 @@ function StaffLogin() {
       })
       .then((res) => {
         if (res.status === 200) {
-          sessionStorage.setItem('token', res.data.token);
+          sessionStorage.setItem('staffToken', res.data.token);
           navigate('/staff-dashboard');
         }
       })
@@ -91,12 +90,7 @@ function StaffLogin() {
               />
               {error && <p style={{ color: 'red' }}>{error}</p>}
               <div className="text-center pt-1 mb-5 pb-1">
-                <MDBBtn
-                  className="mb-4 w-100 gradient-custom-2"
-                  onClick={handleLogin}
-                >
-                  <i>Sign in</i>
-                </MDBBtn>
+              <button onClick={handleLogin} className="mb-4 w-100 gradient-custom-2 btn-custom">Sign in</button>
               </div>
               <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
                 <p className="mb-0" align="center">
