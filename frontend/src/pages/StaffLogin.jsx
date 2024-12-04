@@ -120,16 +120,6 @@ function StaffLogin() {
                     alt="Jang's International Restaurant"
                   />
                 </div>
-                <hr width="100%" size="5" color="white" noshade />
-                <p className="small mb-0">
-                  (If you are looking to log in as a restaurant <i>customer</i>{' '}
-                  and accidentally clicked on this page, you may find your way to
-                  the customer login page by clicking on the "<b>Customer Login</b>" button on the Navigation Bar at the top of the page, or simply by&nbsp;
-                  <a href="http://localhost:5173/login">
-                    <i>clicking here</i>
-                  </a>
-                  .)
-                </p>
               </div>
             </div>
           </MDBCol>

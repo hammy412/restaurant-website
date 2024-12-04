@@ -60,9 +60,8 @@ function CreateAccount() {
             <div className="d-flex flex-column justify-content-center gradient-custom-2 h-100 mb-4">
               <div className="text-white px-3 py-4 p-md-5 mx-md-4">
                 <h4 className="mb-4">Join us and be part of our community</h4>
-                <p className="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                <p className="small mb-0">
+                Create an account to easily make and manage reservations at Jang's. Stay updated on availability, special events, and exclusive offers. Sign up today for a hassle-free dining experience!
                 </p>
               </div>
             </div>
